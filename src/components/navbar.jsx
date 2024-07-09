@@ -19,7 +19,7 @@ const Navbar = () => {
 
         <div className="ml-auto flex md:hidden">
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex gap-2 flex-col items-start justify-center">
+            <DropdownMenuTrigger className="outline-0 flex gap-2 flex-col items-start justify-center">
               <span className="w-4 h-1 bg-rich-palette rounded-full" />
               <span className="w-9 h-1 bg-rich-palette rounded-full" />
               <span className="ml-auto w-4 h-1 bg-rich-palette rounded-full" />
