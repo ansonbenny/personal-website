@@ -5,7 +5,7 @@ import resume from "../../assets/resume.pdf";
 const Page = () => {
   return (
     <div className="bg-foreground py-primary flex">
-      <div className="container flex flex-col gap-[4rem]">
+      <div className="container flex flex-col gap-[3rem] md:gap-[4rem]">
         <Heading>Resume</Heading>
         <div className="w-full flex flex-col gap-[2rem] mx-auto max-w-primary">
           {[

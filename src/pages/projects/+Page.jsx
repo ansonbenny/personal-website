@@ -3,7 +3,7 @@ import { Heading, P } from "../../components";
 const Page = () => {
   return (
     <div className="bg-foreground py-primary flex">
-      <div className="container flex flex-col gap-[4rem]">
+      <div className="container flex flex-col gap-[3rem] md:gap-[4rem]">
         <div className="flex flex-col gap-[2rem]">
           <Heading>Projects</Heading>
           <div className="max-w-primary mx-auto text-center">

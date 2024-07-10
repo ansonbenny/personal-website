@@ -8,7 +8,7 @@ const Page = () => {
   return (
     <>
       <div className="hidden md:block fixed bg-foreground left-0 top-0 w-[43%] h-full" />
-      <div className="container bg-foreground md:bg-[transparent] relative py-primary my-auto">
+      <div className="container bg-foreground md:bg-[transparent] relative -mt-[3rem] md:!mt-auto md:mb-auto py-primary">
         <div className="grid md:grid-cols-[45%_55%] items-center max-w-primary mx-auto">
           <div className="mb-auto">
             <div className="block md:hidden absolute bg-background left-0 top-0 w-full h-[40%]"></div>
