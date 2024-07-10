@@ -8,7 +8,7 @@ const Page = () => {
           <Heading>Projects</Heading>
           <div className="max-w-primary mx-auto text-center">
             <P>
-              {`I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.`}
+              {`Explore my web development projects, where creativity meets technical expertise. Each project demonstrates my ability to build responsive, user-friendly websites and web-applications, showcasing my skills in front-end and back-end development.`}
             </P>
           </div>
         </div>
@@ -27,7 +27,7 @@ const Page = () => {
               key={k}
               className="shadow-sm bg-background flex flex-col-reverse md:grid md:grid-cols-[auto_15rem] justify-between md:gap-10"
             >
-              <div className="flex flex-col gap-[2rem] py-12">
+              <div className="flex flex-col gap-5 py-12">
                 <div className="relative px-10 md:pr-0 flex flex-col gap-2">
                   <div className="border-l-[5px] border-blue-600 absolute left-0 h-full" />
                   <h3 className="capitalize font-medium text-xl text-blue-600">

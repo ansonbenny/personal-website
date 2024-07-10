@@ -29,7 +29,7 @@ function onRenderHtml(pageContext) {
   const desc =
     pageContext.data?.description ||
     pageContext.config.description ||
-    "Demo of using Vike";
+    "MERN Stack Developer with hands-on experience in developing and deploying web applications.";
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
@@ -38,8 +38,9 @@ function onRenderHtml(pageContext) {
         <link rel="icon" href="${logoUrl}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${desc}" />
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
         <title>${title}</title>
       </head>
       <body>

@@ -84,8 +84,7 @@
 
 body {
   background: hsl(var(--background));
-  font-family: "Inter", sans-serif;
-  font-feature-settings: "cv03", "cv04", "cv08", "cv11", "cv10" !important;
+  font-family: "DM Sans", sans-serif;
   width: 100%;
   height: auto;
 }

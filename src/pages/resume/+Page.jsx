@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heading, P } from "../../components";
+import resume from "../../assets/resume.pdf";
 
 const Page = () => {
   return (
@@ -27,14 +28,7 @@ const Page = () => {
             {
               title: "Languages",
               list: true,
-              items: [
-                [
-                  "Entrepreneurial Mindset",
-                  "Go-to-Market Planning",
-                  "Teamwork & Collaboration",
-                  "Digital Analytics",
-                ],
-              ],
+              items: [["English", "Malayalam"]],
             },
           ].map((parent, key) => (
             <div className="flex flex-col gap-[2rem]" key={key}>
@@ -46,9 +40,12 @@ const Page = () => {
                   <Button
                     variant="secondary"
                     size="sm"
-                    className="uppercase rounded-full px-7 hover:bg-foreground"
+                    className="capitalize rounded-full px-7 hover:bg-foreground"
+                    onClick={() => {
+                      window.open(resume, "_blank");
+                    }}
                   >
-                    downdload cv
+                    downdload CV
                   </Button>
                 )}
               </div>

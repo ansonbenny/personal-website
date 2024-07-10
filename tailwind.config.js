@@ -75,6 +75,9 @@ module.exports = {
       maxWidth: {
         primary: "50rem",
       },
+      fontSize: {
+        sm: ".9rem",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

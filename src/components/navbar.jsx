@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="container flex flex-row items-center py-5 md:py-8">
         <h1 className="capitalize text-2xl text-rich-palette font-semibold">
           Anson Benny{" "}
-          <span className="hidden md:inline-block uppercase text-lg font-[300]">
+          <span className="hidden md:inline-block text-lg font-[300]">
             / MERN Stack developer
           </span>
         </h1>
@@ -33,7 +33,7 @@ const Navbar = () => {
                 <DropdownMenuItem key={k}>
                   <Link
                     href={v.href}
-                    className="text-sm uppercase font-[300] ease-in-out duration-500 hover:text-blue-600"
+                    className="text-sm capitalize font-[300] ease-in-out duration-500 hover:text-blue-600"
                   >
                     {v.label}
                   </Link>
@@ -52,7 +52,7 @@ const Navbar = () => {
             <Link
               key={k}
               href={v.href}
-              className="text-sm uppercase font-[300] ease-in-out duration-500 hover:text-blue-600"
+              className="text-sm capitalize font-[300] ease-in-out duration-500 hover:text-blue-600"
             >
               {v.label}
             </Link>

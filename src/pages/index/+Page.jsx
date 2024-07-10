@@ -1,6 +1,8 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Hash, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { P } from "../../components";
+import { navigate } from "vike/client/router";
+// import profile from "../../assets/profile-pic.png";
 
 const Page = () => {
   return (
@@ -13,39 +15,43 @@ const Page = () => {
             <div className="shadow-sm bg-[#f5ece6] w-full flex flex-col relative">
               <div className="p-12 flex flex-col items-center justify-center gap-5">
                 <img
-                  src="https://static.wixstatic.com/media/86f442ff0674441faadc2994b1b33e77.jpg/v1/crop/x_130,y_160,w_1320,h_1311/fill/w_496,h_488,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/86f442ff0674441faadc2994b1b33e77.jpg"
+                  src={
+                    "https://static.wixstatic.com/media/86f442ff0674441faadc2994b1b33e77.jpg/v1/crop/x_130,y_160,w_1320,h_1311/fill/w_496,h_488,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/86f442ff0674441faadc2994b1b33e77.jpg"
+                  }
                   alt="profile"
                   className="max-w-[12rem] rounded-full"
                 />
                 <h1 className="text-2xl text-rich-palette font-semibold capitalize">
-                  Anson
-                  <br />
-                  Benny
+                  Anson Benny
                 </h1>
                 <div className="bg-blue-600 h-[2px] w-12" />
-                <h2 className="text-lg text-rich-palette font-[300] uppercase">
+                <h2 className="text-lg text-rich-palette font-[300] capitalize">
                   MERN Stack developer
                 </h2>
               </div>
               <div className="p-4 bg-background w-full flex flex-row gap-5 items-center justify-center">
-                <a href="" className="group">
-                  <Linkedin
-                    size={"1.3rem"}
-                    className="text-rich-palette group-hover:text-blue-600"
-                  />
-                </a>
-                <a href="" className="group">
-                  <Github
-                    className="text-rich-palette group-hover:text-blue-600"
-                    size={"1.3rem"}
-                  />
-                </a>
-                <a href="" className="group">
-                  <Twitter
-                    className="text-rich-palette group-hover:text-blue-600"
-                    size={"1.3rem"}
-                  />
-                </a>
+                {[
+                  {
+                    Icon: Linkedin,
+                    href: "https://www.linkedin.com/in/anson-benny/",
+                  },
+                  { Icon: Github, href: "https://github.com/ansonbenny" },
+                  { Icon: Hash, href: "https://ansonbenny.hashnode.dev/" },
+                  // { Icon: Twitter, href: "https://x.com/BennyAnson54253" },
+                ].map((v, k) => (
+                  <a
+                    href={v.href}
+                    className="group"
+                    rel="noreferrer"
+                    target="_blank"
+                    key={k}
+                  >
+                    <v.Icon
+                      size={"1.3rem"}
+                      className="text-rich-palette group-hover:text-blue-600"
+                    />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -60,23 +66,24 @@ const Page = () => {
               <Button
                 variant="secondary"
                 size="sm"
-                className="uppercase rounded-full px-7"
+                className="capitalize rounded-full px-7"
+                onClick={() => navigate("/resume")}
               >
                 Resume
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="uppercase rounded-full px-7"
+                className="capitalize rounded-full px-7"
+                onClick={() => navigate("/projects")}
               >
                 Projects
               </Button>
             </div>
             <P>
-              {`I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.`}
+              {`Full Stack Developer with hands-on experience in developing and deploying web applications. Have a proven track record in crafting multiple highly-scalable applications using full stack.`}
               <br />
-              <br />
-              {`I’m a great place for you to tell a story and let your users know a little more about you.`}
+              {`I'm happiest when I'm creating, learning, exploring, and thinking about how to make things better. Always Eager to Adapt and Take on New Challenges!`}
             </P>
           </div>
         </div>
