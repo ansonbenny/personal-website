@@ -9,7 +9,7 @@ import {
 const Navbar = () => {
   return (
     <div className="md:sticky bg-background top-0 left-0 w-full z-20">
-      <div className="container flex flex-row items-center py-5 md:py-8">
+      <div className="container flex flex-row items-center h-[4.5rem] md:h-[5rem]">
         <h1 className="capitalize text-2xl text-rich-palette font-semibold">
           Anson Benny{" "}
           <span className="hidden md:inline-block text-lg font-[300]">

@@ -1,1 +1,3 @@
-export const title = "Anson Benny - Resume";
+const title = "Anson Benny - Resume";
+
+export default title;

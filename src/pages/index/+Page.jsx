@@ -1,8 +1,8 @@
-import { Github, Hash, Linkedin } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { P } from "../../components";
 import { navigate } from "vike/client/router";
-// import profile from "../../assets/profile-pic.png";
+import profile from "../../assets/profile.png";
 
 const Page = () => {
   return (
@@ -15,9 +15,7 @@ const Page = () => {
             <div className="shadow-sm bg-[#f5ece6] w-full flex flex-col relative">
               <div className="p-12 flex flex-col items-center justify-center gap-5">
                 <img
-                  src={
-                    "https://static.wixstatic.com/media/86f442ff0674441faadc2994b1b33e77.jpg/v1/crop/x_130,y_160,w_1320,h_1311/fill/w_496,h_488,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/86f442ff0674441faadc2994b1b33e77.jpg"
-                  }
+                  src={profile}
                   alt="profile"
                   className="max-w-[12rem] rounded-full"
                 />
@@ -35,9 +33,8 @@ const Page = () => {
                     Icon: Linkedin,
                     href: "https://www.linkedin.com/in/anson-benny/",
                   },
+                  { Icon: Mail, href: "mailto:ansonbenny166@gmail.com" },
                   { Icon: Github, href: "https://github.com/ansonbenny" },
-                  { Icon: Hash, href: "https://ansonbenny.hashnode.dev/" },
-                  // { Icon: Twitter, href: "https://x.com/BennyAnson54253" },
                 ].map((v, k) => (
                   <a
                     href={v.href}
@@ -92,4 +89,4 @@ const Page = () => {
   );
 };
 
-export { Page };
+export default Page;

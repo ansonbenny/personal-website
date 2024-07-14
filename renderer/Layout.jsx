@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { childrenPropType } from "./PropTypeValues";
 import { PageContextProvider } from "./usePageContext";
-import { Navbar } from "../src/components";
+import { Footer, Navbar } from "../src/components";
 import "./css/globals.css";
 
 Layout.propTypes = {
@@ -18,6 +18,7 @@ function Layout({ pageContext, children }) {
       <PageContextProvider pageContext={pageContext}>
         <Navbar />
         {children}
+        <Footer />
       </PageContextProvider>
     </React.StrictMode>
   );

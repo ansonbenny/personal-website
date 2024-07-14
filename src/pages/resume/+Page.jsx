@@ -3,34 +3,70 @@ import { Heading, P } from "../../components";
 import resume from "../../assets/resume.pdf";
 
 const Page = () => {
+  const data = [
+    {
+      title: "Experience",
+      items: [
+        {
+          start: "Feb 2024",
+          end: "Present",
+          position: "Software Engineer",
+          company: "Micro.company",
+          description: `
+          I have extensively utilized a diverse array of technologies to drive successful project outcomes.
+          Enhancing user experience through meticulous attention to design and functionality.
+          Troubleshooting and resolving complex technical issues to ensure system reliability and performance.
+          My role has been instrumental in continuously advancing my software development skills, enabling me to remain at the cutting edge of technological advancements.
+          `,
+        },
+        {
+          start: "Dec 2022",
+          end: "Jan 2024",
+          position: "Full stack developer",
+          company: "Freelancing",
+          description: `
+          Architecting web applications using technologies like Node.js, Express.js, MongoDB, React, Redux, Next.Js, HTML5 and CSS.
+          Successfully developed a variety of websites, including multi-vendor e-commerce platforms for clients in Zimbabwe, Africa.
+          Implemented SEO best practices for optimizing website performance and visibility on search engines.
+          Received positive feedback from clients.
+          `,
+        },
+      ],
+    },
+    {
+      title: "Professional skillset",
+      list: true,
+      items: [
+        [
+          "Javascript",
+          "Typescript",
+          "React",
+          "Next.js",
+          "Node.js",
+          "MongoDB",
+          "Express.js",
+          "Git & GitHub",
+          "HTML5 & CSS",
+          "Redux",
+          "React-Hook-Form",
+          "WebRTC",
+          "Socket.IO",
+        ],
+      ],
+    },
+    {
+      title: "Languages",
+      list: true,
+      items: [["English", "Malayalam"]],
+    },
+  ];
+
   return (
     <div className="bg-foreground py-primary flex">
       <div className="container flex flex-col gap-[3rem] md:gap-[4rem]">
         <Heading>Resume</Heading>
         <div className="w-full flex flex-col gap-[2rem] mx-auto max-w-primary">
-          {[
-            {
-              title: "Experience",
-              items: [1, 1],
-            },
-            {
-              title: "Professional skillset",
-              list: true,
-              items: [
-                [
-                  "Entrepreneurial Mindset",
-                  "Go-to-Market Planning",
-                  "Teamwork & Collaboration",
-                  "Digital Analytics",
-                ],
-              ],
-            },
-            {
-              title: "Languages",
-              list: true,
-              items: [["English", "Malayalam"]],
-            },
-          ].map((parent, key) => (
+          {data.map((parent, key) => (
             <div className="flex flex-col gap-[2rem]" key={key}>
               <div className="flex flex-row gap-5 justify-between items-end">
                 <h2 className="text-rich-palette text-2xl font-medium">
@@ -69,21 +105,16 @@ const Page = () => {
                   ) : (
                     <>
                       <h3 className="capitalize font-medium text-xl text-blue-600">
-                        2035-Present
+                        {v.start} - {v.end}
                       </h3>
                       <div className="grid md:grid-cols-2 gap-5">
                         <div className="flex flex-col gap-2">
-                          <h4 className="uppercase font-[300] text-lg text-rich-palette">
-                            JOB POSITION
+                          <h4 className="capitalize font-[300] text-lg text-rich-palette">
+                            {v.position}
                           </h4>
-                          <P>Company Name</P>
+                          <P>{v.company}</P>
                         </div>
-                        <P>
-                          {`I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.`}
-                          <br />
-                          <br />
-                          {`I’m a great place for you to tell a story and let your users know a little more about you.`}
-                        </P>
+                        <P>{v.description}</P>
                       </div>
                     </>
                   )}
@@ -97,4 +128,4 @@ const Page = () => {
   );
 };
 
-export { Page };
+export default Page;
