@@ -1,0 +1,54 @@
+---
+import Navbar from "@/components/navbar";
+import "../globals.css";
+
+const year = new Date().getFullYear();
+
+const description =
+  "MERN Stack Developer with hands-on experience in developing and deploying web applications.";
+const title = Astro.props.page
+  ? `Anson Benny - ${Astro.props.page}`
+  : "Anson Benny";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta name="title" content={title} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navbar client:load />
+    <slot />
+
+    <div class="bg-background relative w-full z-20">
+      <div
+        class="container flex items-center text-center justify-center h-[4.5rem] md:h-[5rem] text-sm font-[300] text-rich-palette"
+      >
+        &copy; {year} by Anson Benny
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -1,4 +1,3 @@
-import { Link } from "../../renderer/Link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,9 +7,9 @@ import {
 
 const Navbar = () => {
   return (
-    <div className="md:sticky bg-background top-0 left-0 w-full z-20">
+    <div className="relative md:sticky bg-background top-0 left-0 w-full z-20">
       <div className="container flex flex-row items-center h-[4.5rem] md:h-[5rem]">
-        <Link
+        <a
           href="/"
           className="capitalize text-2xl !text-rich-palette font-semibold !no-underline"
         >
@@ -18,7 +17,7 @@ const Navbar = () => {
           <span className="hidden md:inline-block text-lg font-[300]">
             / MERN Stack developer
           </span>
-        </Link>
+        </a>
 
         <div className="ml-auto flex md:hidden">
           <DropdownMenu>
@@ -34,12 +33,12 @@ const Navbar = () => {
                 { href: "/projects", label: "projects" },
               ].map((v, k) => (
                 <DropdownMenuItem key={k}>
-                  <Link
+                  <a
                     href={v.href}
                     className="text-sm capitalize font-[300] ease-in-out duration-500 hover:text-blue-600"
                   >
                     {v.label}
-                  </Link>
+                  </a>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -52,13 +51,13 @@ const Navbar = () => {
             { href: "/resume", label: "resume" },
             { href: "/projects", label: "projects" },
           ].map((v, k) => (
-            <Link
+            <a
               key={k}
               href={v.href}
               className="text-sm capitalize font-[300] ease-in-out duration-500 hover:text-blue-600"
             >
               {v.label}
-            </Link>
+            </a>
           ))}
         </div>
       </div>
