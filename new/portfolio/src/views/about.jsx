@@ -32,13 +32,13 @@ const About = () => {
             loading="eager"
             className="size-28 rounded-full border border-border object-cover md:size-36"
           />
-          <Flex
+          {/* <Flex
             align={"center"}
             className="absolute -bottom-2 left-1/2 -translate-x-1/2 gap-0.5 rounded border border-border bg-background py-0.5 pr-1.5 pl-0.5 text-[10px] whitespace-nowrap text-muted-foreground"
           >
-            <IconPointFilled className="size-3 text-blue-400" />
+            <IconPointFilled className="size-3 text-highlight" />
             open to work
-          </Flex>
+          </Flex> */}
         </div>
 
         <div className="space-y-5">
@@ -47,8 +47,8 @@ const About = () => {
               {NAME}
             </h1>
             <Flex align={"center"} gap={2}>
-              <span className="h-px w-6 bg-blue-400" />
-              <Typography variant={"sm"} className="text-blue-400">
+              <span className="h-px w-6 bg-highlight" />
+              <Typography variant={"sm"} className="text-highlight">
                 {POSITION}
               </Typography>
             </Flex>

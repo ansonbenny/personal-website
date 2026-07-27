@@ -58,7 +58,7 @@ const Terminal = () => {
       </Flex>
       <div className="p-[var(--px-container)]">
         <Flex className="text-xs">
-          <span className="text-blue-400 lowercase">
+          <span className="text-highlight lowercase">
             {NAME.split(" ")[0]}@portfolio
           </span>
           <span>:~$</span>

@@ -44,7 +44,7 @@ const Menu = ({ activeTab = "/" }) => {
             className={cn(
               "flex items-center justify-start gap-1.5 text-xs transition-colors [&>svg]:size-3",
               activeTab === tab.href
-                ? "text-blue-400"
+                ? "text-highlight"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >

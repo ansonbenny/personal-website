@@ -1,9 +1,8 @@
-import { IconArrowUpRight } from "@tabler/icons-react"
-
 import Flex from "@/components/base/flex"
 import Typography from "@/components/base/typography"
 import Page, { Chip, PageHeading } from "@/components/modules/page"
 import { PROJECTS } from "@/utils/constants"
+import { Card, CardContent } from "@/components/ui/card"
 
 const Projects = () => {
   return (
@@ -15,14 +14,8 @@ const Projects = () => {
 
       <div className="space-y-4">
         {PROJECTS.map((project, index) => (
-          <a
-            key={project.name}
-            href={project.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block rounded-md border border-border bg-background p-4 transition-colors hover:border-blue-400/40 md:p-5"
-          >
-            <Flex justify={"between"} align={"start"} gap={4}>
+          <Card key={project.name}>
+            <CardContent>
               <div className="min-w-0 space-y-3">
                 <div className="space-y-1">
                   <Flex align={"center"} gap={2}>
@@ -32,12 +25,7 @@ const Projects = () => {
                     >
                       {String(index + 1).padStart(2, "0")}
                     </Typography>
-                    <Typography
-                      variant={"h5"}
-                      className="transition-colors group-hover:text-blue-400"
-                    >
-                      {project.name}
-                    </Typography>
+                    <Typography variant={"h5"}>{project.name}</Typography>
                   </Flex>
                   <Typography
                     variant={"xs"}
@@ -57,17 +45,8 @@ const Projects = () => {
                   ))}
                 </Flex>
               </div>
-
-              <Flex
-                align={"center"}
-                gap={1}
-                className="shrink-0 text-xs text-muted-foreground transition-colors group-hover:text-blue-400"
-              >
-                <span className="hidden sm:inline">{project.linkLabel}</span>
-                <IconArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Flex>
-            </Flex>
-          </a>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </Page>

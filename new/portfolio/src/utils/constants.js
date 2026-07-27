@@ -80,8 +80,6 @@ export const PROJECTS = [
     description:
       "A dynamic marketplace where both vendors and administrators can list products for sale, with payments handled end to end.",
     stack: ["MERN", "TypeScript", "Paystack"],
-    href: "https://store263.com/",
-    linkLabel: "Live site",
   },
   {
     name: "Social Media WebApp",
@@ -89,8 +87,6 @@ export const PROJECTS = [
     description:
       "A social platform built for private and group chat, video/audio calls and story sharing. Socket.IO powers live messaging, while WebRTC / PeerJS handles peer-to-peer calls.",
     stack: ["MERN", "WebRTC", "Socket.IO"],
-    href: "https://github.com/ansonbenny/Social-Media",
-    linkLabel: "Source",
   },
   {
     name: "Music Streamer",
@@ -98,8 +94,6 @@ export const PROJECTS = [
     description:
       "Listen to music and build your favourite collection. The Spotify API supplies millions of tracks, albums and artists.",
     stack: ["MERN", "Spotify API"],
-    href: "https://github.com/ansonbenny/Music-Streamer",
-    linkLabel: "Source",
   },
   {
     name: "ChatGPT Clone",
@@ -107,8 +101,6 @@ export const PROJECTS = [
     description:
       "A clone of ChatGPT built on the OpenAI API, allowing human-like conversations with streamed responses.",
     stack: ["MERN", "OpenAI"],
-    href: "https://github.com/ansonbenny/ChatGPT",
-    linkLabel: "Source",
   },
 ]
 

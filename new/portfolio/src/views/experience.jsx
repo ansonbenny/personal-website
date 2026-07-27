@@ -5,6 +5,7 @@ import Typography from "@/components/base/typography"
 import Page, { PageHeading } from "@/components/modules/page"
 import { buttonVariants } from "@/components/ui/button"
 import { EXPERIENCES, RESUME_URL } from "@/utils/constants"
+import { Card, CardContent } from "@/components/ui/card"
 
 const Experience = () => {
   return (
@@ -25,42 +26,46 @@ const Experience = () => {
         }
       />
 
-      <ol className="ml-1 space-y-5 border-l border-border pl-6">
+      <ol className="ml-1 space-y-4 border-l border-border pl-6">
         {EXPERIENCES.map((experience) => (
           <li key={experience.company} className="relative">
             <span className="absolute top-6 -left-[1.8rem] size-2 rounded-full bg-blue-400 ring-4 ring-[#333]" />
 
-            <article className="space-y-4 rounded-md border border-border bg-background p-4 md:p-5">
-              <Flex
-                justify={"between"}
-                className="flex-col gap-1 md:flex-row md:items-baseline md:gap-4"
-              >
-                <div className="space-y-1">
-                  <Typography variant={"h5"}>{experience.position}</Typography>
-                  <Typography variant={"sm"} className="block text-blue-400">
-                    {experience.company}
-                  </Typography>
-                </div>
-                <Typography
-                  variant={"xs"}
-                  className="shrink-0 text-muted-foreground"
+            <Card>
+              <CardContent className="space-y-4">
+                <Flex
+                  justify={"between"}
+                  className="flex-col gap-1 md:flex-row md:items-baseline md:gap-4"
                 >
-                  {experience.start} — {experience.end}
-                </Typography>
-              </Flex>
-
-              <ul className="space-y-2">
-                {experience.highlights.map((highlight) => (
-                  <li
-                    key={highlight}
-                    className="flex gap-2.5 text-sm leading-normal text-muted-foreground"
+                  <div className="space-y-1">
+                    <Typography variant={"h5"}>
+                      {experience.position}
+                    </Typography>
+                    <Typography variant={"sm"} className="block text-highlight">
+                      {experience.company}
+                    </Typography>
+                  </div>
+                  <Typography
+                    variant={"xs"}
+                    className="shrink-0 text-muted-foreground"
                   >
-                    <span className="text-blue-400 select-none">▸</span>
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
+                    {experience.start} — {experience.end}
+                  </Typography>
+                </Flex>
+
+                <ul className="space-y-2">
+                  {experience.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="flex gap-2.5 text-sm leading-normal text-muted-foreground"
+                    >
+                      <span className="text-highlight select-none">▸</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </li>
         ))}
       </ol>
