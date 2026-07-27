@@ -16,31 +16,26 @@ export const WELCOME_MESSAGE = "Welcome to my portfolio!"
 export const PROFILE_IMAGE = "/profile.png"
 export const RESUME_URL = "/resume.pdf"
 
-export const SUMMARY = [
-  "Full Stack Developer with hands-on experience in developing and deploying web applications. Proven track record in crafting multiple highly-scalable applications across the stack.",
-  "I'm happiest when I'm creating, learning, exploring, and thinking about how to make things better. Always eager to adapt and take on new challenges.",
-]
+export const SUMMARY = `Software Engineer with 3+ years of experience building scalable SaaS products and full-stack web applications using
+the MERN stack. Skilled in React, Next.js, Node.js, MongoDB, REST APIs, AI integrations, payment gateways, and
+modern UI development. Passionate about building high-performance, user-centric products`
 
 export const SKILLS = [
   {
     label: "languages",
-    items: ["JavaScript", "TypeScript", "HTML5", "CSS"],
+    items: ["JavaScript", "TypeScript"],
   },
   {
     label: "frontend",
-    items: ["React", "Next.js", "Redux", "React Hook Form"],
+    items: ["React", "Next.js", "Astro"],
   },
   {
     label: "backend",
-    items: ["Node.js", "Express.js", "MongoDB"],
-  },
-  {
-    label: "realtime",
-    items: ["Socket.IO", "WebRTC"],
+    items: ["Node.js", "MongoDB", "REST APIs"],
   },
   {
     label: "tooling",
-    items: ["Git", "GitHub"],
+    items: ["Git", "GitHub", "and more"],
   },
 ]
 
@@ -53,54 +48,70 @@ export const EXPERIENCES = [
     start: "Feb 2024",
     end: "Present",
     highlights: [
-      "Utilised a diverse array of technologies to drive successful project outcomes.",
-      "Enhanced user experience through meticulous attention to design and functionality.",
-      "Troubleshot and resolved complex technical issues to ensure system reliability and performance.",
-      "Continuously advanced my development skills to stay at the cutting edge of new technology.",
+      "Develop and maintain scalable SaaS products using the MERN stack.",
+      "Design and build responsive user interfaces and RESTful APIs.",
+      "Integrate AI services, payment gateways, authentication, and third-party APIs.",
+      "Optimize application performance, scalability, and user experience.",
+      "Collaborate with cross-functional teams to deliver production-ready features.",
     ],
   },
   {
-    position: "Full Stack Developer",
-    company: "Freelancing",
+    position: "Freelance Full Stack Engineer",
+    company: "Self Employed",
     start: "Dec 2022",
     end: "Present",
     highlights: [
-      "Architected web applications using Node.js, Express.js, MongoDB, React, Redux, Next.js, HTML5 and CSS.",
-      "Developed a variety of websites, including multi-vendor e-commerce platforms for clients in Zimbabwe, Africa.",
-      "Implemented SEO best practices to optimise website performance and visibility on search engines.",
-      "Received consistently positive feedback from clients.",
+      "Designed and developed custom web applications for international clients using the MERN stack.",
+      "Built responsive, SEO-friendly websites and business applications.",
+      "Integrated payment gateways, authentication systems, and third-party APIs.",
+      "Delivered end-to-end solutions from requirement analysis to deployment and maintenance.",
+      "Worked directly with clients to translate business requirements into scalable software solutions.",
     ],
   },
 ]
 
 export const PROJECTS = [
   {
-    name: "Store263",
-    tagline: "Multi-vendor e-commerce",
+    name: "Course.link",
+    tagline: "SaaS course website builder — Micro.company",
     description:
-      "A dynamic marketplace where both vendors and administrators can list products for sale, with payments handled end to end.",
-    stack: ["MERN", "TypeScript", "Paystack"],
+      "A SaaS platform that lets creators build and publish professional course websites, supporting free, paid and invite-only courses with secure access control. Handles YouTube, Vimeo and direct video uploads, Stripe and Razorpay payments, webhooks, and third-party integrations such as WATI.",
+    stack: ["MERN", "Stripe", "Razorpay", "Webhooks"],
   },
   {
-    name: "Social Media WebApp",
-    tagline: "Live chat & calling",
+    name: "CRM",
+    tagline: "AI-powered SaaS CRM — under development",
     description:
-      "A social platform built for private and group chat, video/audio calls and story sharing. Socket.IO powers live messaging, while WebRTC / PeerJS handles peer-to-peer calls.",
+      "An AI-powered SaaS CRM focused on customer relationship management, workflow automation and modern user experience, built on scalable backend services and a responsive frontend architecture.",
+    stack: ["MERN", "AI"],
+  },
+  {
+    name: "Store263",
+    tagline: "E-commerce platform — Zimbabwe, Africa",
+    description:
+      "A full-featured e-commerce platform for the African market with customer, admin and vendor dashboards. Integrates PayStack payments, Google and Facebook login, and currency exchange APIs, plus SEO optimization, PWA support, product variants, blogs, wishlist and cart.",
+    stack: ["MERN", "PayStack", "PWA", "SEO"],
+  },
+  {
+    name: "SoftChat",
+    tagline: "Real-time messaging & calling",
+    description:
+      "A real-time messaging platform supporting one-to-one and group conversations, with video/audio calling over WebRTC, file sharing, user presence and authentication. Scalable real-time communication is built on Socket.IO.",
     stack: ["MERN", "WebRTC", "Socket.IO"],
   },
   {
-    name: "Music Streamer",
-    tagline: "Digital music platform",
+    name: "ChatGPT Clone",
+    tagline: "AI chat application",
     description:
-      "Listen to music and build your favourite collection. The Spotify API supplies millions of tracks, albums and artists.",
-    stack: ["MERN", "Spotify API"],
+      "An AI-powered chat application built on the OpenAI API, with chat history, conversation management, Google OAuth authentication and account management behind a responsive UI.",
+    stack: ["MERN", "OpenAI", "Google OAuth"],
   },
   {
-    name: "ChatGPT Clone",
-    tagline: "Conversational AI",
+    name: "Music Streamer",
+    tagline: "Music streaming platform",
     description:
-      "A clone of ChatGPT built on the OpenAI API, allowing human-like conversations with streamed responses.",
-    stack: ["MERN", "OpenAI"],
+      "A music streaming platform built on the Spotify API, with playlists, collections, search, recommendations and authentication, wrapped in a responsive UI with light and dark themes.",
+    stack: ["MERN", "Spotify API"],
   },
 ]
 

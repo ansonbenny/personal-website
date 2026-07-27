@@ -54,13 +54,9 @@ const About = () => {
             </Flex>
           </div>
 
-          <div className="max-w-xl space-y-3">
-            {SUMMARY.map((paragraph) => (
-              <Typography key={paragraph} className="text-muted-foreground">
-                {paragraph}
-              </Typography>
-            ))}
-          </div>
+          <Typography className="max-w-xl text-muted-foreground">
+            {SUMMARY}
+          </Typography>
 
           <Flex gap={2} className="flex-wrap">
             <a
