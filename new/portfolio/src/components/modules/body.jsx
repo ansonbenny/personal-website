@@ -10,10 +10,24 @@ import Terminal, { TerminalHeader } from "./terminal"
 import Menu from "./menu"
 
 const Body = ({ children, activeTab = "/" }) => {
+  const [sheetOpen, setSheetOpen] = useState(false) // 'left' or 'right'
+
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    setIsMobile(window.matchMedia("(max-width: 768px)").matches)
+    const matches = window.matchMedia("(max-width: 768px)").matches
+    setIsMobile(matches)
+
+    // if not mobile, check if there is a saved status in session storage
+    if (!matches) {
+      const currentStatus = window.sessionStorage.getItem("sheetOpen")
+
+      if (currentStatus) {
+        setSheetOpen(currentStatus)
+      } else {
+        setSheetOpen("right")
+      }
+    }
 
     const handleResize = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches)
@@ -24,7 +38,10 @@ const Body = ({ children, activeTab = "/" }) => {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const [sheetOpen, setSheetOpen] = useState(false) // 'left' or 'right'
+  // save the sheet open status to session storage
+  useEffect(() => {
+    window.sessionStorage.setItem("sheetOpen", sheetOpen)
+  }, [sheetOpen])
 
   return (
     <div className="min-h-[100svh] overflow-hidden bg-background">
@@ -54,14 +71,18 @@ const Body = ({ children, activeTab = "/" }) => {
               href={tab.href}
               aria-current={activeTab === tab.href ? "page" : undefined}
               className={cn(
-                "flex items-center justify-center gap-1.5 px-[var(--px-container)] text-xs whitespace-nowrap transition-colors [&>svg]:size-3",
+                "relative flex items-center justify-center gap-1.5 px-[var(--px-container)] text-xs whitespace-nowrap transition-colors [&>svg]:size-3",
                 activeTab === tab.href
-                  ? "-mb-1 border-t-2 border-blue-400 bg-[#333] pb-1"
+                  ? "bg-[#333] text-primary"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
               <tab.icon />
               {tab.label}
+
+              {activeTab === tab.href && (
+                <span className="absolute top-0 left-0 block h-[2px] w-full bg-highlight"></span>
+              )}
             </a>
           ))}
         </Flex>
@@ -96,7 +117,8 @@ const Body = ({ children, activeTab = "/" }) => {
           {children}
         </Flex>
 
-        {sheetOpen === "right" && (
+        {/* the sheet renders its own Terminal, so only mount one at a time */}
+        {sheetOpen === "right" && !isMobile && (
           <div
             className={
               "h-inherit hidden w-[var(--w-sidebar)] shrink-0 border-l border-border md:flex"
@@ -113,7 +135,7 @@ const Body = ({ children, activeTab = "/" }) => {
             side={sheetOpen === "left" ? "left" : "right"}
             className={"[&>button]:hidden"}
           >
-            <div className="w-full">
+            <div className="flex min-h-0 w-full flex-1 flex-col">
               {sheetOpen === "left" ? (
                 <>
                   <Flex
@@ -136,13 +158,13 @@ const Body = ({ children, activeTab = "/" }) => {
                 </>
               ) : (
                 <>
-                  <Flex className={"h-[var(--h-header)]"}>
+                  <Flex className={"h-[var(--h-header)] shrink-0"}>
                     <TerminalHeader
                       setSheetOpen={setSheetOpen}
                       className={"w-full border-b"}
                     />
                   </Flex>
-                  <Terminal setSheetOpen={setSheetOpen} />
+                  <Terminal />
                 </>
               )}
             </div>

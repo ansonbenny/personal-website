@@ -6,24 +6,64 @@ import Typography from "../base/typography"
 const ROOT = `~/${NAME.split(" ")[0].toLowerCase()}`
 
 /**
+ * Upper bound of numbers rendered. Views are passed to Body as Astro slot
+ * content, so Page is static HTML and cannot measure anything at runtime —
+ * instead we render more rows than any view needs and let the gutter's
+ * overflow clip them to the real content height.
+ */
+const MAX_LINES = 400
+
+const LINES = Array.from({ length: MAX_LINES }, (_, index) => index + 1)
+
+/**
+ * Editor-style line numbers, one per 24px band of content (h-6 rows). The
+ * content is arbitrary markup, so a "line" is a slice of rendered height
+ * rather than a source line.
+ */
+const LineNumbers = () => {
+  return (
+    <div
+      aria-hidden="true"
+      className="absolute inset-y-0 left-0 w-10 overflow-hidden border-r border-border pr-3 text-right text-xs text-muted-foreground/40 select-none"
+    >
+      {LINES.map((line) => (
+        <div key={line} className="h-6 leading-6 tabular-nums">
+          {line}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/**
  * Scrollable editor pane. The shell (Body) owns the viewport height, so every
  * view stretches to it and scrolls internally instead of scrolling the page.
  */
 const Page = ({ file, children, className }) => {
   return (
     <div className="min-h-0 w-full self-stretch overflow-y-auto">
-      <div className={cn("mx-auto w-full max-w-3xl pb-16", className)}>
-        <Flex
-          align={"center"}
-          gap={1.5}
-          className="pb-8 text-xs text-muted-foreground"
-        >
-          <span>{ROOT}</span>
-          <span className="opacity-40">/</span>
-          <span className="text-foreground">{file}</span>
-        </Flex>
+      {/* min-h-full keeps the gutter running the full pane on short views */}
+      <div className="relative min-h-full w-full">
+        <LineNumbers />
 
-        {children}
+        <div
+          className={cn(
+            "w-full max-w-3xl pb-16 pl-[calc(var(--spacing)*10+var(--px-container))]",
+            className
+          )}
+        >
+          <Flex
+            align={"center"}
+            gap={1.5}
+            className="pb-8 text-xs text-muted-foreground"
+          >
+            <span>{ROOT}</span>
+            <span className="opacity-40">/</span>
+            <span className="text-foreground">{file}</span>
+          </Flex>
+
+          {children}
+        </div>
       </div>
     </div>
   )
