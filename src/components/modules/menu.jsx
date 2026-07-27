@@ -3,10 +3,18 @@ import { CONTACTS, NAME, POSITION, TABS } from "@/utils/constants"
 import Space from "../base/space"
 import Typography from "../base/typography"
 import Flex from "../base/flex"
+import { useEffect, useState } from "react"
 
 const Menu = ({ activeTab = "/" }) => {
+  const [year, setYear] = useState("")
+
+  useEffect(() => {
+    const currentYear = new Date().getFullYear()
+    setYear(currentYear)
+  }, [])
+
   return (
-    <div className="w-full p-[var(--px-container)]">
+    <Flex vertical className="w-full flex-1 p-[var(--px-container)]">
       <Space y={3} className={"w-full"}>
         <Space>
           <Typography variant={"h6"}>{NAME}</Typography>
@@ -53,7 +61,11 @@ const Menu = ({ activeTab = "/" }) => {
           </a>
         ))}
       </Space>
-    </div>
+
+      <Typography variant={"xs"} className="mt-auto text-muted-foreground">
+        @ {year} by {NAME}
+      </Typography>
+    </Flex>
   )
 }
 
