@@ -27,8 +27,8 @@ export const TerminalHeader = ({ setSheetOpen, className }) => {
         className
       )}
     >
-      <Flex className={"text-xs"} gap={1.5}>
-        <IconTerminal className={"size-3"} /> Terminal
+      <Flex className={"text-xs"} gap={1.5} align={"center"}>
+        <IconTerminal className={"size-3 shrink-0"} /> Terminal
       </Flex>
       <Button onClick={() => setSheetOpen(null)} size="icon-xs" variant="ghost">
         <IconX />
