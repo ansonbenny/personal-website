@@ -37,7 +37,7 @@ const Body = ({ children, activeTab = "/" }) => {
         0,
         active.offsetLeft - (container.clientWidth - active.offsetWidth) / 2
       ),
-      behavior: "smooth",
+      behavior: "instant",
     })
   }, [activeTab])
 
