@@ -9,9 +9,7 @@ import { TABS, WELCOME_MESSAGE } from "@/utils/constants"
 import Terminal, { TerminalHeader } from "./terminal"
 import Menu from "./menu"
 
-const activeTab = "/"
-
-const Body = ({ children }) => {
+const Body = ({ children, activeTab = "/" }) => {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -54,12 +52,12 @@ const Body = ({ children }) => {
             <a
               key={tab.href}
               href={tab.href}
+              aria-current={activeTab === tab.href ? "page" : undefined}
               className={cn(
-                activeTab === tab.href &&
-                  "-mb-1 border-t-2 border-blue-400 bg-[#333] pb-1",
-
-                // "-mb-1 border-t-2 border-blue-400 bg-background pb-1",
-                "flex items-center justify-center gap-1.5 px-[var(--px-container)] text-xs [&>svg]:size-3"
+                "flex items-center justify-center gap-1.5 px-[var(--px-container)] text-xs whitespace-nowrap transition-colors [&>svg]:size-3",
+                activeTab === tab.href
+                  ? "-mb-1 border-t-2 border-blue-400 bg-[#333] pb-1"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
               <tab.icon />
@@ -92,7 +90,7 @@ const Body = ({ children }) => {
             "h-inherit hidden w-[var(--w-sidebar)] shrink-0 border-r border-border md:flex"
           }
         >
-          <Menu />
+          <Menu activeTab={activeTab} />
         </div>
         <Flex className={"h-inherit w-full bg-[#333] p-[var(--px-container)]"}>
           {children}
@@ -134,7 +132,7 @@ const Body = ({ children }) => {
                       <IconX />
                     </Button>
                   </Flex>
-                  <Menu />
+                  <Menu activeTab={activeTab} />
                 </>
               ) : (
                 <>

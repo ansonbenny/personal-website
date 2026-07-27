@@ -1,24 +1,30 @@
+import { cn } from "@/lib/utils"
 import { CONTACTS, NAME, POSITION, TABS } from "@/utils/constants"
 import Space from "../base/space"
 import Typography from "../base/typography"
 import Flex from "../base/flex"
 
-const Menu = () => {
+const Menu = ({ activeTab = "/" }) => {
   return (
     <div className="w-full p-[var(--px-container)]">
       <Space y={3} className={"w-full"}>
         <Space>
           <Typography variant={"h6"}>{NAME}</Typography>
-          <Typography variant={"xs"}>{POSITION}</Typography>
+          <Typography variant={"xs"} className="text-muted-foreground">
+            {POSITION}
+          </Typography>
         </Space>
 
         <Flex gap={2}>
           {CONTACTS.map((contact) => (
             <a
-              key={contact.value}
-              href={contact.value}
-              target="_blank"
-              rel="noopener noreferrer"
+              key={contact.label}
+              href={contact.href}
+              aria-label={contact.label}
+              title={contact.label}
+              {...(contact.external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
               <contact.icon className={"size-4"} />
@@ -34,7 +40,13 @@ const Menu = () => {
           <a
             key={tab.href}
             href={tab.href}
-            className="flex items-center justify-start gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground [&>svg]:size-3"
+            aria-current={activeTab === tab.href ? "page" : undefined}
+            className={cn(
+              "flex items-center justify-start gap-1.5 text-xs transition-colors [&>svg]:size-3",
+              activeTab === tab.href
+                ? "text-blue-400"
+                : "text-muted-foreground hover:text-foreground"
+            )}
           >
             <tab.icon />
             {tab.label}

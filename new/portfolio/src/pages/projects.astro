@@ -1,0 +1,11 @@
+---
+import Layout from "@/layouts/main.astro"
+import Body from "@/components/modules/body"
+import Projects from "@/views/projects"
+---
+
+<Layout page="Projects">
+  <Body client:load activeTab="/projects">
+    <Projects />
+  </Body>
+</Layout>

@@ -1,0 +1,11 @@
+---
+import Layout from "@/layouts/main.astro"
+import Body from "@/components/modules/body"
+import Experience from "@/views/experience"
+---
+
+<Layout page="Experience">
+  <Body client:load activeTab="/experience">
+    <Experience />
+  </Body>
+</Layout>

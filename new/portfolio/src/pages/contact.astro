@@ -1,0 +1,11 @@
+---
+import Layout from "@/layouts/main.astro"
+import Body from "@/components/modules/body"
+import Contact from "@/views/contact"
+---
+
+<Layout page="Contact">
+  <Body client:load activeTab="/contact">
+    <Contact />
+  </Body>
+</Layout>
