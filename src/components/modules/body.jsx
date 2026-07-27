@@ -3,7 +3,7 @@ import Flex from "../base/flex"
 import Typography from "../base/typography"
 import { IconMenu, IconTerminal, IconX } from "@tabler/icons-react"
 import { Button } from "../ui/button"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Sheet, SheetContent } from "../ui/sheet"
 import { TABS, WELCOME_MESSAGE } from "@/utils/constants"
 import Terminal, { TerminalHeader } from "./terminal"
@@ -22,6 +22,24 @@ const Body = ({ children, activeTab = "/" }) => {
 
   const [isMobile, setIsMobile] = useState(false)
   const [isLaptop, setIsLaptop] = useState(false)
+
+  const tabsRef = useRef(null)
+
+  // keep the active tab visible inside the horizontally scrollable tab bar
+  useEffect(() => {
+    const container = tabsRef.current
+    const active = container?.querySelector('[aria-current="page"]')
+
+    if (!container || !active) return
+
+    container.scrollTo({
+      left: Math.max(
+        0,
+        active.offsetLeft - (container.clientWidth - active.offsetWidth) / 2
+      ),
+      behavior: "smooth",
+    })
+  }, [activeTab])
 
   useEffect(() => {
     const mobile = window.matchMedia("(max-width: 768px)").matches
@@ -77,7 +95,7 @@ const Body = ({ children, activeTab = "/" }) => {
           <IconMenu />
         </Button>
 
-        <Flex className={"overflow-x-auto"}>
+        <Flex ref={tabsRef} className={"overflow-x-auto"}>
           {TABS.map((tab) => (
             <a
               key={tab.href}
