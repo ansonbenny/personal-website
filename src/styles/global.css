@@ -116,3 +116,8 @@
 body {
   overflow: hidden;
 }
+
+[data-slot="sheet-content"] {
+  max-width: 95% !important;
+  width: 100% !important;
+}

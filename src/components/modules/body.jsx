@@ -9,17 +9,29 @@ import { TABS, WELCOME_MESSAGE } from "@/utils/constants"
 import Terminal, { TerminalHeader } from "./terminal"
 import Menu from "./menu"
 
+const SheetContentWrapper = ({ children, side = "left" }) => {
+  return (
+    <SheetContent side={side} className={"[&>button]:hidden"}>
+      <div className="flex min-h-0 w-full flex-1 flex-col">{children}</div>
+    </SheetContent>
+  )
+}
+
 const Body = ({ children, activeTab = "/" }) => {
   const [sheetOpen, setSheetOpen] = useState(false) // 'left' or 'right'
 
   const [isMobile, setIsMobile] = useState(false)
+  const [isLaptop, setIsLaptop] = useState(false)
 
   useEffect(() => {
-    const matches = window.matchMedia("(max-width: 768px)").matches
-    setIsMobile(matches)
+    const mobile = window.matchMedia("(max-width: 768px)").matches
+    setIsMobile(mobile)
 
-    // if not mobile, check if there is a saved status in session storage
-    if (!matches) {
+    const laptop = window.matchMedia("(min-width: 1024px)").matches
+    setIsLaptop(laptop)
+
+    // if laptop, check if there is a saved status in session storage
+    if (laptop) {
       const currentStatus = window.sessionStorage.getItem("sheetOpen")
 
       if (currentStatus) {
@@ -31,6 +43,7 @@ const Body = ({ children, activeTab = "/" }) => {
 
     const handleResize = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches)
+      setIsLaptop(window.matchMedia("(min-width: 1024px)").matches)
     }
 
     window.addEventListener("resize", handleResize)
@@ -118,10 +131,10 @@ const Body = ({ children, activeTab = "/" }) => {
         </Flex>
 
         {/* the sheet renders its own Terminal, so only mount one at a time */}
-        {sheetOpen === "right" && !isMobile && (
+        {sheetOpen === "right" && isLaptop && (
           <div
             className={
-              "h-inherit hidden w-[var(--w-sidebar)] shrink-0 border-l border-border md:flex"
+              "h-inherit flex w-[var(--w-sidebar)] shrink-0 border-l border-border"
             }
           >
             <Terminal />
@@ -129,48 +142,47 @@ const Body = ({ children, activeTab = "/" }) => {
         )}
       </Flex>
 
-      {isMobile && (
-        <Sheet open={!!sheetOpen} onOpenChange={setSheetOpen}>
-          <SheetContent
-            side={sheetOpen === "left" ? "left" : "right"}
-            className={"[&>button]:hidden"}
+      <Sheet
+        key={"left"}
+        open={sheetOpen === "left" && isMobile}
+        onOpenChange={setSheetOpen}
+      >
+        <SheetContentWrapper>
+          <Flex
+            justify={"between"}
+            align={"center"}
+            className={
+              "h-[var(--h-header)] w-full border-b border-border px-[var(--px-container)]"
+            }
           >
-            <div className="flex min-h-0 w-full flex-1 flex-col">
-              {sheetOpen === "left" ? (
-                <>
-                  <Flex
-                    justify={"between"}
-                    align={"center"}
-                    className={
-                      "h-[var(--h-header)] w-full border-b border-border px-[var(--px-container)] md:hidden"
-                    }
-                  >
-                    <Typography variant={"xs"}>{WELCOME_MESSAGE}</Typography>
-                    <Button
-                      onClick={() => setSheetOpen(null)}
-                      size="icon-xs"
-                      variant="ghost"
-                    >
-                      <IconX />
-                    </Button>
-                  </Flex>
-                  <Menu activeTab={activeTab} />
-                </>
-              ) : (
-                <>
-                  <Flex className={"h-[var(--h-header)] shrink-0"}>
-                    <TerminalHeader
-                      setSheetOpen={setSheetOpen}
-                      className={"w-full border-b"}
-                    />
-                  </Flex>
-                  <Terminal />
-                </>
-              )}
-            </div>
-          </SheetContent>
-        </Sheet>
-      )}
+            <Typography variant={"xs"}>{WELCOME_MESSAGE}</Typography>
+            <Button
+              onClick={() => setSheetOpen(null)}
+              size="icon-xs"
+              variant="ghost"
+            >
+              <IconX />
+            </Button>
+          </Flex>
+          <Menu activeTab={activeTab} />
+        </SheetContentWrapper>
+      </Sheet>
+
+      <Sheet
+        key={"right"}
+        open={sheetOpen === "right" && !isLaptop}
+        onOpenChange={setSheetOpen}
+      >
+        <SheetContentWrapper side="right">
+          <Flex className={"h-[var(--h-header)] shrink-0"}>
+            <TerminalHeader
+              setSheetOpen={setSheetOpen}
+              className={"w-full border-b"}
+            />
+          </Flex>
+          <Terminal />
+        </SheetContentWrapper>
+      </Sheet>
     </div>
   )
 }
