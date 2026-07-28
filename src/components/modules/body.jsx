@@ -89,13 +89,13 @@ const Body = ({ children, activeTab = "/" }) => {
           size="icon-xs"
           variant="ghost"
           className={
-            "my-auto mr-1 ml-[var(--px-container)] inline-flex rounded border border-border md:hidden"
+            "my-auto mr-1 ml-[var(--px-container)] inline-flex shrink-0 rounded border border-border md:hidden"
           }
         >
           <IconMenu />
         </Button>
 
-        <Flex ref={tabsRef} className={"overflow-x-auto"}>
+        <Flex ref={tabsRef} className={"flex-1 overflow-x-auto"}>
           {TABS.map((tab) => (
             <a
               key={tab.href}
@@ -121,7 +121,7 @@ const Body = ({ children, activeTab = "/" }) => {
         {sheetOpen === "right" ? (
           <TerminalHeader
             setSheetOpen={setSheetOpen}
-            className={"ml-auto border-l"}
+            className={"shrink-0 border-l"}
           />
         ) : (
           <Button
@@ -129,7 +129,7 @@ const Body = ({ children, activeTab = "/" }) => {
             size="icon-xs"
             variant="ghost"
             className={
-              "my-auto mr-[var(--px-container)] ml-auto rounded border border-border"
+              "my-auto mr-[var(--px-container)] ml-1 shrink-0 rounded border border-border"
             }
           >
             <IconTerminal />
@@ -144,6 +144,7 @@ const Body = ({ children, activeTab = "/" }) => {
         >
           <Menu activeTab={activeTab} />
         </div>
+
         <Flex className={"h-inherit w-full bg-[#333] p-[var(--px-container)]"}>
           {children}
         </Flex>
