@@ -61,7 +61,7 @@
 
 :root {
   --highlight: oklch(70.7% 0.165 254.624);
-  --background: oklch(0.252 0 0);
+  --background: oklch(0.1776 0 0);
   --foreground: oklch(0.985 0 0);
   --card: var(--background);
   --card-foreground: var(--foreground);
